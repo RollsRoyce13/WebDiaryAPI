@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebDiaryAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]")] // This attribute defines the base route for the controller
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -18,7 +18,7 @@ namespace WebDiaryAPI.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
+        [HttpGet(Name = "GetWeatherForecast")] // This attribute maps HTTP GET requests to this method
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

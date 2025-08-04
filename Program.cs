@@ -1,8 +1,20 @@
+using Microsoft.EntityFrameworkCore;
+using WebDiaryAPI.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
 builder.Services.AddControllers();
+
+// Register the ApplicationDbContext with dependency injection, using SQL Server and the connection string from configuration
+builder.Services.AddDbContext<ApplicationDbContext>(
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle    
+// Add endpoints API explorer service, which helps with discovering endpoints for documentation
 builder.Services.AddEndpointsApiExplorer();
+// Add Swagger generation service to the container, enabling Swagger/OpenAPI documentation
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
