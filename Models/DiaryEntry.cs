@@ -10,6 +10,6 @@ namespace WebDiaryAPI.Models
         [Required]
         public string Content { get; set; }
         [Required]
-        public DateTime Created { get; set; } = DateTime.Now;
+        public DateTime CreationDate { get; set; } = DateTime.Now;
     }
 }
